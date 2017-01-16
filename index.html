@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Click me</title>
+    <style>
+      * {
+		  margin: 0;
+		  padding: 0;
+		  box-sizing: border-box;
+	  }
+      body, html {
+		  width: 100%;
+	      height: 100%;
+	      font: 14px Helvetica, Arial;
+	  }
+	  body {
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+	  }
+	  h1 {
+		font-size: 30px;
+	  }
+	  button {
+		  margin: 20px;
+		  padding: 10px 20px;
+		  outline: none;
+		  border: none;
+		  border-radius: 10px;
+		  background: blue;
+		  color: #fff;
+		  font: 24px Helvetica, Arial;
+		  cursor: pointer;
+	  }
+	  .wrapper {
+	      text-align: center;
+	  }
+    </style>
+  </head>
+  <body>
+	<div class="wrapper">
+	  <h1>I was clicked <span id="counter"></span> times!</h1>
+      <button id="button">Click Me</button>
+	</div>
+	
+    <script src="/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io();
+	  var button = document.getElementById("button");
+	  var counter = document.getElementById("counter");
+	  socket.on('loaded', function(count) {
+	    counter.innerHTML = count;
+	  });
+	  button.onclick = function() {
+	    socket.emit('button click', true);
+	  }
+	  socket.on('button click', function(count) {
+	    counter.innerHTML = count;
+	  });
+	</script>
+  </body>
+</html>
