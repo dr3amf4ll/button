@@ -1,13 +1,13 @@
 {
-  "name": "button",
+  "name": "Socket-button",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Button builded on sockets",
+  "main": "index.html",
   "scripts": {
-	"start": "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "drmfl",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
